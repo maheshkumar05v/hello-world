@@ -1,0 +1,10 @@
+<Target Name="CustomAfterBuild" AfterTargets="Build">
+<PropertyGroup>
+     <_OutputCopyLocation>$(OutputPath)..\..\CustomOutput\</_OutputCopyLocation>
+  </PropertyGroup>
+    <ItemGroup>
+      <_FilesToCopy Include="$(OutputPath)**\*"/>
+    </ItemGroup>
+    <Message Text="_FilesToCopy: @(_FilesToCopy)" Importance="high"/>
+    <Message Text="DestFiles:
+        @(_FilesToCopy->'$(_OutputCopyLocation)%(RecursiveDir)%(Filename)%(Extension)')"/>
